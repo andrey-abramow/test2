@@ -25,23 +25,23 @@ abstract class DatabaseTable {
 	function __set($name, $value) {
 		$this->_attributes[$name] = $value;
 	}
-    public static  function  findAll($options=null){
-        $called_class = ($options['called_class']) ?
-            $options['called_class'] : self ::get_called_class();
-        $class = new $called_class();
-        $columns = ($options['columns']) ? implode($options['columns'], ', ') : "*";
-        $sql = "SELECT $columns FROM $class->_name";
-        if ($options['where']) $sql .= " WHERE " . $options['where'];
-        if ($options['order']) $sql .= " ORDER BY " . $options['order'];
-        if ($options['limit']) $sql .= " LIMIT " . $options['limit'];
-        if ($options['offset']) $sql .= " OFFSET " . $options['offset'];
-        $result =   self::$_database->query($sql);
-        $tab = null;
-        while ($row = self::$_database->nextRow($result)) {
-            $new_class = new $class($row);
-            $tab[] = $new_class;
-        }
-        return $tab;
+        public static  function  findAll($options=null){
+	        $called_class = ($options['called_class']) ?
+	            $options['called_class'] : self ::get_called_class();
+	        $class = new $called_class();
+	        $columns = ($options['columns']) ? implode($options['columns'], ', ') : "*";
+	        $sql = "SELECT $columns FROM $class->_name";
+	        if ($options['where']) $sql .= " WHERE " . $options['where'];
+	        if ($options['order']) $sql .= " ORDER BY " . $options['order'];
+	        if ($options['limit']) $sql .= " LIMIT " . $options['limit'];
+	        if ($options['offset']) $sql .= " OFFSET " . $options['offset'];
+	        $result =   self::$_database->query($sql);
+	        $tab = null;
+	        while ($row = self::$_database->nextRow($result)) {
+	            $new_class = new $class($row);
+	            $tab[] = $new_class;
+	        }
+	        return $tab;
 
     }
 
@@ -50,16 +50,16 @@ abstract class DatabaseTable {
 			$options['called_class'] : self ::get_called_class();
 		$class = new $called_class();
 		$columns = ($options['columns']) ? implode($options['columns'], ', ') : "*";
-        $id = intval(self::$_database->realEscapeString($id));
-        $sql = "SELECT $columns FROM $class->_name WHERE id = $id";
-        $result =  self::$_database->query($sql);
-        if(self::$_database->numberOfRows($result)>0) {
-            $attributes = self::$_database->nextRow($result);
-            foreach ($attributes as $key => $value) {
-                $class->$key = $value;
-            }
-            return $class;
-        }
+	        $id = intval(self::$_database->realEscapeString($id));
+	        $sql = "SELECT $columns FROM $class->_name WHERE id = $id";
+	        $result =  self::$_database->query($sql);
+	        if(self::$_database->numberOfRows($result)>0) {
+	            $attributes = self::$_database->nextRow($result);
+	            foreach ($attributes as $key => $value) {
+	                $class->$key = $value;
+	            }
+	            return $class;
+                }
 
 		return false;
 	}
@@ -72,7 +72,7 @@ abstract class DatabaseTable {
 		$columns = implode(array_keys($attributes), ', ');
 		$values = implode($attributes, ', ');
   		$sql = "INSERT INTO $this->_name ($columns) VALUES ($values)";
-	    self::$_database->query($sql);
+	        self::$_database->query($sql);
 		return self::$_database->insertId;
 	}
 	function update_attributes($attributes) {
