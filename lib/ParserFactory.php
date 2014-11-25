@@ -1,4 +1,8 @@
 <?php
+include_once 'lib/JsonParser.php';
+include_once 'lib/IniParser.php';
+
+
  class ParserFactory{
 
     public static  function create($filename){

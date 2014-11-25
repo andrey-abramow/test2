@@ -1,5 +1,7 @@
 <?php
 include_once 'PostWriter.php';
+include_once 'lib/UserWriter.php';
+
 abstract class ContentWriterFactory{
 
     public static function getContentWriter($filename){

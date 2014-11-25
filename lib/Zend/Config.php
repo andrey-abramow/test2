@@ -156,6 +156,8 @@ class Zend_Config implements Countable, Iterator
      */
     public function __set($name, $value)
     {
+        $this->_data[$name] = $value;
+
         if ($this->_allowModifications) {
             if (is_array($value)) {
                 $this->_data[$name] = new self($value, true);
@@ -165,8 +167,8 @@ class Zend_Config implements Countable, Iterator
             $this->_count = count($this->_data);
         } else {
             /** @see Zend_Config_Exception */
-            require_once 'Zend/Config/Exception.php';
-            throw new Zend_Config_Exception('Zend_Config is read only');
+           // require_once 'Zend/Config/Exception.php';
+           // throw new Zend_Config_Exception('Zend_Config is read only');
         }
     }
 

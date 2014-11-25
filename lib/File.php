@@ -5,8 +5,9 @@ class File {
 
     public function __construct($filename){
          if(!file_exists($filename)) throw new Exception("file not found");
+
          $this->_file     = fopen($filename,"r");
-        $this->_fileSize = filesize($filename);
+         $this->_fileSize = filesize($filename);
     }
     public function getContent(){
         return fread($this->_file, $this->_fileSize);

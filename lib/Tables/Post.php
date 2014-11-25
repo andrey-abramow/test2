@@ -1,6 +1,3 @@
 <?php
 
-class Post extends  DatabaseTable{
-
-
-}
+class Post extends  DatabaseTable{}

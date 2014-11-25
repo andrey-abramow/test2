@@ -25,7 +25,7 @@ abstract class DatabaseTable {
 	function __set($name, $value) {
 		$this->_attributes[$name] = $value;
 	}
-	
+
 	public static function find($id='all', $options=null) {
 		$called_class = ($options['called_class']) ?
 			$options['called_class'] : self::get_called_class();	

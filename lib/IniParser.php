@@ -1,10 +1,9 @@
 <?php
 
-include_once 'ParserFactory.php';
+include_once 'lib/Parser.php';
 
 class  IniParser extends  Parser{
 
-    protected  $_filename;
 
     public function parseContent()
     {
@@ -12,11 +11,11 @@ class  IniParser extends  Parser{
         $className = $this->getClassName();
 
         $temp =  new Zend_Config_Ini($this->_filename);
-        foreach($temp->$className as $rows){
-
-
-
-            $result[] = $rows;
+        foreach($temp->$className as $rows=>$values){
+            echo var_dump($rows);
+            $values->id = $rows;
+            echo var_dump($values->id);
+            $result[] = $values;
 
         }
 

@@ -1,12 +1,12 @@
 <?php
-include_once 'ParserFactory.php';
+include_once 'lib/Parser.php';
 
 class  JsonParser extends  Parser{
 
-    protected  $_content;
 
     public function parseContent()
     {
+
          return json_decode($this->_content);
 
     }

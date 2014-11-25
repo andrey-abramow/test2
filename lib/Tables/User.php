@@ -1,6 +1,3 @@
 <?php
 
-class User extends  DatabaseTable{
-
-
-}
+class User extends  DatabaseTable{}
