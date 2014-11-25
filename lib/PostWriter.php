@@ -1,5 +1,7 @@
 <?php
 include_once 'ContentWriter.php';
+include_once 'Tables/Post.php';
+
 class PostWriter extends  ContentWriter{
 
 

@@ -1,5 +1,7 @@
 <?php
 include_once 'ContentWriter.php';
+include_once 'Tables/User.php';
+
 
  class UserWriter extends ContentWriter{
 

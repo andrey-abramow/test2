@@ -1,8 +1,6 @@
 <?php
-include_once 'lib/ParserFactory.php';
 
 include_once 'Libraries.php';
-try {
 
     for ($i = 1; $i < $argc; $i++) {
         $filename = $argv[$i];
@@ -15,4 +13,3 @@ try {
 
 
 
- }catch(Exception $e){echo $e->getMessage();}
